@@ -1,0 +1,36 @@
+Pre-Disclosure Survey Questions
+
+1. Do you struggle with the "blank-page phenomenon"? The blank-page phenomenon best describes the struggle to begin writing with no foundation or starting point. If so, how do you overcome it, and do you enjoy the process of overcoming it?
+2. Do you use LLMs (Large Language Models such as ChatGPT, Together.ai, etc)  in your interactive narrative practice? If so, how do you use them?
+3. Do you have any ethical qualms with LLMs in interactive narrative authoring? If so, what are they?
+4. Would you find it helpful if you had assistance converting dialogue summaries into explicit dialogue? (e.g. Jim asks Tom about cars = Jim: “Hey Tom, what do you think about cars?”)
+5. Please rank the 4 sets of branching dialogue scenes provided in order from best quality to worst quality. Use the label of the tab on the spreadsheet to indicate your ranking.
+6. Please indicate which, if any, of the branching dialogue scenes are authored by a human.
+7. What are the weaknesses of each scene provided?
+8. What are the strengths of each scene provided?
+
+Disclosure Statement
+
+Thank you all for your responses to the questionnaires!  We wanted to disclose a couple things on what is currently being worked on. 
+We will not be implementing AI into our workflow. This was an additional study alongside our writer's room, but will not influence our current work structure.
+We would also like to disclose how each spreadsheet tab was generated:
+1. AI generated from prompt (Zero Shot)
+2. Human generated 
+3. AI generated from prompt (Multi Shot) 
+4. Human structured plot, AI-generated dialogue
+With this in mind, we reach out to ask if any of you would change your answer to the question "Please rank the 4 sets of branching dialogue scenes provided in order from best quality to worst quality. Use the label of the tab on the spreadsheet to indicate your ranking."
+Please do not change your original answer on the google doc sent to us. We would like to hear your input either via discord or email.
+Here are the research questions we were attempting to investigate with the collected data: 
+1. Are LLM's capable of the following tasks during content authoring: 
+  a. Creating IDN trees from scratch 
+  b. Creating explicit dialogue of an existing tree that provides summaries
+  c. Creating pre-conditions and manipulating quantitative states
+2. Do LLM's produce quality content that is judged to be valuable to authors of IDN?
+3. Do LLM's solve meaningful problems in IDN writers face when authoring (namely, explicit dialogue authoring and blank-page phenomenon)? 
+4. Do writers currently engaged in an IDN project have ethical qualms with LLM tooling? 
+If you have any questions about the study, results, or anything else please feel free to reach out to Sam or I! We would like to reiterate that none of these experimental methodologies around AI will be used now or in the future of this production.
+
+Post-Disclosure Survey Questions
+     
+1. If your work as a writer involved editing these trees to be semantically correct, would you describe your work as enjoyable or creatively rewarding? Why or why not? How would you compare this to editing human-authored content? 
+2. Do you find a tree with two choices per dialogue node to be well-written?
