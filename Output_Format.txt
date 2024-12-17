@@ -1,0 +1,59 @@
+//Output JSON Format For Dialogue Trees
+
+[{
+	"id": "",
+	"prev_id": "",
+	"speaking_character": "",
+	"player_character": "",
+	"dialogue_summary": "",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+			{
+				"character1": "",
+				"character2": "",
+				"relationship_stat": "",
+				"relationship_stat_current": int,
+				"relationship_stat_change": int,
+			},
+			...
+		],
+		"attributes": [
+			{
+				"character": "",
+				"attribute": "",
+				"attribute_change": ""
+			},
+			...
+		],
+	},
+	"choices": [
+		{
+			"choice_content": "",
+			"next_id": "",
+			"preconditions": {
+				"relationships": [
+					{
+						"character1": "",
+						"character2": "",
+						"relationship_stat": "",
+						"relationship_symbol": "",
+                        "relationship_stat_current": int,
+                        "relationship_threshold": int
+					},
+					...
+				],
+				"attributes": [
+					{
+						"character": "",
+						"attribute": ""
+					},
+					...
+				]
+			}
+		},
+		...
+	]
+},
+...
+]

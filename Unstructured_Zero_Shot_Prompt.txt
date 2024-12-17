@@ -1,0 +1,97 @@
+//Unstructured Zero Shot Prompt
+
+You are a writer for a game studio that makes visual novel games. You are writing scenes between two characters in a branching narrative style. This writing style consists of dialogue points with options for the players to select responses for what their player character will say. The game you are working on is an educational game that aims to teach the Responsible Conduct of Research (the ethics of performing research in an academic environment) through interactions between characters.
+
+You are writing a single scene, and the scene you are writing involves two characters: Hendricks and Praveen. The Player character is always Hendricks. Player choices should always be utterances from Hendricks. Praveen's responses should be strictly dialogue.
+
+Hendricks is a professor in the Psychology department. Hendricks is the chair of an upcoming conference. Hendricks is looking for reviewers and any help she can get to run the conference. Hendricks is a middle aged woman who is tenured and advises three students, one of which is Praveen. 
+
+- Hendricks is looking for reviewers, choice options should reflect this objective.
+
+- Hendricks is Praveen's advisor. 
+
+Praveen is a PhD student in his second year and is looking to get involved in the academic community. He is eager, overconfident, and looking for any way to get ahead. Praveen is advised by Hendricks. Praveen is a young man in his mid-twenties and has no experience reviewing academic work.
+
+- Praveen is looking for help to get ahead. 
+
+- Praveen is overconfident. 
+
+- Praveen would like the opportunity to review for the conference. 
+
+In the scene you are writing, the conference submission deadline is rapidly approaching and Hendricks is stressed about finding reviewers. At the same time, Praveen is struggling to get involved with his peers and his academic community at large. Praveen will ask Hendricks if she has any opportunities he can get involved in, to which Hendricks tells him to review papers. Hendricks emphasizes that Praveen needs to be unbiased in this work. Praveen reassures her that he is fit for the job and has it under control. The scene ends with Hendricks offering him the reviewer position and them saying goodbye.
+
+You will write this scene using a JSON format structured in the pattern below. Descriptions of fields are listed in-line after the comment symbols (""). Three dots indicate that there can be multiple entries in the array. The symbols after each key indicate what format the value should be in.
+               
+{
+	"id": "", //The id of the current node
+	"prev_id": "", //The id of the previous node
+	"speaking_character": "", //which character is speaking
+	"player_character": "", //which character the players occupies
+	"dialogue_summary": "", //A short high-level description of the dialogue in this node
+	"dialogue": "", //The explicit dialogue in the node
+	"stat_changes": { //The changes in stats that occur as a result of visiting the node
+    	"relationships": [ //The changes to relationship stats between characters
+        	{
+            	"character1": "", //The first character in a relationship
+            	"character2": "", //The second character in a relationship
+            	"relationship_stat": "", //The name of the relationship stat
+            	"relationship_stat_current": int, //The current value of the relationship stat
+            	"relationship_stat_change": int, //The numerical change of the relationship stat
+        	},
+        	...
+    	],
+    	"attributes": [ //The attributes associated with characters
+        	{
+            	"character": "", //The character associated with the attribute
+            	"attribute": "", //The name of the attribute
+            	"attribute_change": "" //Whether the attribute is added or removed
+        	},
+        	...
+    	],
+	},
+	"choices": [ //A list of choices that lead to the next nodes in the story
+    	{
+        	"choice_content": "", //The sentence displayed to the player to make a choice
+        	"next_id": "", //The id of the next node to be visited if this choice is "selected"
+        	"preconditions": { //The requirements for the choice node to be available
+            	"relationships": [ // The Required relationship stats for the node
+                	{
+                    	"character1": "", //The first character in the relationship 
+                    	"character2": "", //The second character in the relationship
+                    	"relationship_stat": int, //The relationship stat involved
+                    	"relationship_symbol": "" //Should the relationship stat be greater, less, or equal
+						"relationship_stat_current": int //The current relationship stat
+						"relationship_threshold": int //What the current relationship stat is compared to
+                	},
+                	...
+            	],
+            	"attributes": [ //What attributes need to be present for the choice to be available
+                	{
+                    	"character": "", //Character associated with the attribute
+                    	"attribute": "" //Name of the attribute
+                	},
+                	...
+            	]
+        	}
+    	},
+    	...
+	]
+}
+
+The IDs of scenes should link to one another through id (current node), prev\_id (previous node) and next\_id (next node), forming a tree structure that moves from an introductory node to a conclusion node. Each node should have "choice" that contain a short sentence indicating the response dialogue and a pointer to the next node using an ID. Choices should sometimes have preconditions that need to be met in order to be available to the player. The tree should be at most 10 nodes deep and should have branching options at multiple points. Some of these nodes should have impacts to the stat changes shown in the structure above based on the stat\_changes object when the node is visited. There are two stats that can be changed. First is relationships:  numerical representations between two characters. Second is attributes: text flags associated with a single character. Some nodes should only be accessible based on previous stat changes (either on relationships or attributes). These changes should be dependent on the content of the dialogue - if a character is rude, it should negatively impact their relationship with the other character. All nodes should be reachable given appropriate player choices.
+
+Write in a style that would match a visual novel: short dialogue snippets that around a sentence per quotation. Multiple dialogue interactions can occur in a single node, with narration occurring out of quotations and character utterances within quotations. Character quotations should be preceded by the character name (for example: Hendricks: "Hello, Praveen." Praveen: "Hello to you, Hendricks."). The player should never choose responses for Praveen and Choice options should only be from Hendrick's point of view.
+
+- Please output your response in the JSON format listed above with a list of objects, each one representing a single node in the tree. 
+
+- Please provide at least 15 nodes in total and 20 at the most. 
+
+- Do not repeat nodes or content in dialogue or choice text. Include preconditions for certain nodes based on previous node stat changes. 
+
+- All choice options should be Hendricks dialogue.
+
+- No choice options should be from Praveen's point of view.
+
+- Do not make the choice content length longer than 5 words.
+
+- Do not use the entire output token length if not necessary. If you reach 20 nodes, hit the goodbye node, or have a tree depth of 10, please terminate.

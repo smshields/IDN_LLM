@@ -1,0 +1,21 @@
+//Academical 2.0 Prompt Example
+
+//The following equation occupied each cell where we were attempting to generate dialogue. The first cell reference (C4 in the example below) contained the dialogue summary for the scene. The second cell reference (E2 in the example below) contained the dialogue generated from the prior node in the tree.
+
+=GPT(
+	CONCATENATE(
+		"Write a paragraph scene with Brad (the PhDstudent researching moral development in children) and Ned (the professor). Here are the scene notes:",
+		C4,
+		"For consistency, other things that have happened: ",
+		E2,
+		"New scene:"
+	)
+)
+
+//Contents of C4: 
+//Brad takes a moment to reflect internally on how Ned is going to grill him before opening the door
+
+//Contents of E2: 
+//Brad reached the door and grasped the handle, motioning to push it inwards. Then he halted, wiping sweat from underneath his glasses. He took a deep breath, trying to calm his racing heart before knocking on the door. This was the moment he had been anxious for all week. Would he come clean? But he was already late, too late to come up with a game plan. Hoping he had the wherewithall for the conversation, he put his hand on the door.
+
+

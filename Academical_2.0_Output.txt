@@ -1,0 +1,10 @@
+//Academical 2.0 Output Example
+
+Brad knew that Ned had a reputation for being passionate,
+but not unfair. He’d always been a bit tough on Brad, despite
+his outward kindness. He was sharp and was probably going
+to detect that Brad had something to hide. The first thought of
+Brad’s was to come clean, he’s going to find out eventually.
+But the other side of him realized that he had a lot of control
+over this project, perhaps he could slip one through. It’s Ned’s
+fault after all that the approval took so long to submit.

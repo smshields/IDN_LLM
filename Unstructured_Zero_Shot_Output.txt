@@ -1,0 +1,209 @@
+//Unstructured Zero-Shot Output
+
+[
+  {
+    "id": "node1",
+    "prev_id": "",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks is stressed about finding reviewers for the conference.",
+    "dialogue": "Hendricks: I'm so stressed about finding reviewers for the conference. Praveen: I'm happy to help, Professor.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "stress",
+          "relationship_stat_current": 5,
+          "relationship_stat_change": 0
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Ask Praveen to review papers",
+        "next_id": "node2",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node2",
+    "prev_id": "node1",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks asks Praveen to review papers.",
+    "dialogue": "Hendricks: I need someone to review these papers. Praveen: I'm happy to help, Professor.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 0,
+          "relationship_stat_change": 1
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the importance of bias",
+        "next_id": "node3",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_symbol": ">=",
+              "relationship_stat_current": 1,
+              "relationship_threshold": 1
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Offer Praveen the reviewer position",
+        "next_id": "node4",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node3",
+    "prev_id": "node2",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the importance of bias.",
+    "dialogue": "Hendricks: Remember, Praveen, you need to be unbiased in your review. Praveen: I understand, Professor.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 2,
+          "relationship_stat_change": 1
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Ask Praveen to confirm his understanding",
+        "next_id": "node5",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_symbol": ">=",
+              "relationship_stat_current": 2,
+              "relationship_threshold": 2
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Offer Praveen the reviewer position",
+        "next_id": "node4",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node4",
+    "prev_id": "node2",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks offers Praveen the reviewer position.",
+    "dialogue": "Hendricks: Alright, Praveen, I think you're ready to review papers. Praveen: Thank you, Professor!",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 3,
+          "relationship_stat_change": 1
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Say goodbye to Praveen",
+        "next_id": "node6",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node5",
+    "prev_id": "node3",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks asks Praveen to confirm his understanding.",
+    "dialogue": "Hendricks: So, Praveen, do you understand the importance of being unbiased? Praveen: Yes, Professor.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 4,
+          "relationship_stat_change": 1
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Offer Praveen the reviewer position",
+        "next_id": "node4",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node6",
+    "prev_id": "node4",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks says goodbye to Praveen.",
+    "dialogue": "Hendricks: Alright, Praveen, I'll see you later. Praveen: Goodbye, Professor!",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 5,
+          "relationship_stat_change": 1
+        }
+      ],
+      "attributes": []
+    },
+    "choices": []
+  }
+]f

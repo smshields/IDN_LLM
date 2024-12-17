@@ -1,0 +1,1080 @@
+//Unstructured Multi-Shot Output
+
+[
+  {
+    "id": "node_1",
+    "prev_id": "",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks is stressed about finding reviewers for the conference",
+    "dialogue": "Hendricks: I'm so overwhelmed with the conference preparations. I need to find some reviewers, but I'm running out of time. Praveen: Hi, Professor Hendricks. I couldn't help but notice you look stressed. What's wrong?",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Offer Praveen a chance",
+        "next_id": "node_2",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Ask Praveen about his research",
+        "next_id": "node_3",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_2",
+    "prev_id": "node_1",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks offers Praveen a chance to review papers",
+    "dialogue": "Hendricks: Praveen, I'm actually looking for reviewers for the conference. Would you be interested in helping me out? Praveen: Really? I'd love to. I'm eager to get involved in the academic community.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 50,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the importance of bias",
+        "next_id": "node_4",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 60,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 50
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Offer Praveen a position",
+        "next_id": "node_5",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 60,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 50
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_3",
+    "prev_id": "node_1",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks asks Praveen about his research",
+    "dialogue": "Hendricks: Actually, Praveen, I'm more interested in hearing about your research. What are you working on these days? Praveen: Ah, I'm studying the effects of social media on mental health. It's a really fascinating topic.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Ask about his methods",
+        "next_id": "node_6",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Talk about the conference",
+        "next_id": "node_7",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_4",
+    "prev_id": "node_2",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the importance of bias",
+    "dialogue": "Hendricks: Praveen, as a reviewer, it's essential that you remain unbiased and impartial. You'll be evaluating papers based on their merit, not on personal opinions or friendships. Praveen: I understand, Professor Hendricks. I'll make sure to keep that in mind.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 70,
+          "relationship_stat_change": 20
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Remind him of the conference deadline",
+        "next_id": "node_8",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 80,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 70
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the review process",
+        "next_id": "node_9",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 80,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 70
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_5",
+    "prev_id": "node_2",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks offers Praveen the reviewer position",
+    "dialogue": "Hendricks: Alright, Praveen, I think you'd be a great fit for this position. I'll give you the details of the review process and the deadline. Praveen: Thank you, Professor Hendricks! I won't let you down.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 80,
+          "relationship_stat_change": 30
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the review process",
+        "next_id": "node_9",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 90,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 80
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference details",
+        "next_id": "node_10",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 90,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 80
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_6",
+    "prev_id": "node_3",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks asks Praveen about his research methods",
+    "dialogue": "Hendricks: That's a fascinating topic, Praveen. Can you tell me more about your research methods? How do you plan to collect data? Praveen: Ah, yes. I'm planning to conduct a survey and gather data from social media platforms.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Ask about data analysis",
+        "next_id": "node_11",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the ethics of data collection",
+        "next_id": "node_12",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_7",
+    "prev_id": "node_3",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks talks about the conference",
+    "dialogue": "Hendricks: Speaking of the conference, Praveen, I'm expecting a lot of submissions this year. We'll need to make sure that the review process is fair and transparent. Praveen: I understand, Professor Hendricks. I'll make sure to keep that in mind.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the review process",
+        "next_id": "node_9",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference schedule",
+        "next_id": "node_13",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_8",
+    "prev_id": "node_4",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks reminds Praveen of the conference deadline",
+    "dialogue": "Hendricks: Remember, Praveen, the conference submission deadline is just around the corner. We need to make sure that all the papers are reviewed on time. Praveen: Don't worry, Professor Hendricks. I'll make sure to get everything done.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 80,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the review process",
+        "next_id": "node_9",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 90,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 80
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the consequences of missing the deadline",
+        "next_id": "node_14",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 80,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 80
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_9",
+    "prev_id": "node_5",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the review process",
+    "dialogue": "Hendricks: Okay, Praveen, as a reviewer, you'll be responsible for evaluating the papers based on their merit, not on personal opinions or friendships. You'll need to read through each paper carefully and provide feedback on its strengths and weaknesses. Praveen: I understand, Professor Hendricks. I'll make sure to do a thorough job.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 90,
+          "relationship_stat_change": 20
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference details",
+        "next_id": "node_10",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 100,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 90
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the importance of feedback",
+        "next_id": "node_15",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 90,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 90
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_10",
+    "prev_id": "node_9",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference details",
+    "dialogue": "Hendricks: Alright, Praveen, now that we've covered the review process, let's talk about the conference details. We'll need to make sure that all the papers are submitted on time and that the conference runs smoothly. Praveen: I'll make sure to keep that in mind, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 100,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the conference schedule",
+        "next_id": "node_11",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 110,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 100
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference logistics",
+        "next_id": "node_16",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 100,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 100
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_11",
+    "prev_id": "node_10",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the conference schedule",
+    "dialogue": "Hendricks: Okay, Praveen, the conference will take place on March 15th and 16th. We'll have a keynote speaker on the first day, and the second day will be dedicated to paper presentations. Praveen: That sounds great, Professor Hendricks. I'll make sure to mark it down in my calendar.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 110,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference program",
+        "next_id": "node_12",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 120,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference registration process",
+        "next_id": "node_17",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 110,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_12",
+    "prev_id": "node_11",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference program",
+    "dialogue": "Hendricks: Okay, Praveen, the conference program will include a variety of sessions and workshops. We'll have a session on research methods, another on data analysis, and a workshop on publishing in academic journals. Praveen: That sounds really interesting, Professor Hendricks. I'll make sure to attend those sessions.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 120,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the conference keynote speaker",
+        "next_id": "node_13",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 130,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 120
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference poster session",
+        "next_id": "node_18",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 120,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 120
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_13",
+    "prev_id": "node_12",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the conference keynote speaker",
+    "dialogue": "Hendricks: Okay, Praveen, the keynote speaker will be Dr. Smith, a renowned expert in the field of psychology. He'll be discussing the latest research on mental health and its implications for society. Praveen: That sounds fascinating, Professor Hendricks. I'm looking forward to hearing him speak.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 130,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference keynote speech",
+        "next_id": "node_14",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 140,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 130
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference networking opportunities",
+        "next_id": "node_19",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 130,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 130
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_14",
+    "prev_id": "node_13",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference keynote speech",
+    "dialogue": "Hendricks: Okay, Praveen, the keynote speech will be a 30-minute presentation by Dr. Smith, followed by a Q&A session. He'll be discussing the latest research on mental health and its implications for society. Praveen: That sounds fascinating, Professor Hendricks. I'm looking forward to hearing him speak.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 140,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the conference evaluation process",
+        "next_id": "node_15",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 150,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 140
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 140,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 140
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_15",
+    "prev_id": "node_14",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the conference evaluation process",
+    "dialogue": "Hendricks: Okay, Praveen, after the conference, we'll be evaluating the presentations and workshops based on their quality and relevance to the field. We'll also be collecting feedback from attendees to improve future conferences. Praveen: That sounds like a great way to ensure the conference is a success.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 150,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 160,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 150
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference follow-up",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 150,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 150
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_16",
+    "prev_id": "node_10",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference logistics",
+    "dialogue": "Hendricks: Okay, Praveen, let's talk about the conference logistics. We'll need to make sure that the venue is set up properly and that all the necessary equipment is available. Praveen: I'll make sure to take care of that, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 100,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the conference setup",
+        "next_id": "node_17",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 110,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 100
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Discuss the conference catering",
+        "next_id": "node_22",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 100,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 100
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_17",
+    "prev_id": "node_16",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the conference registration process",
+    "dialogue": "Hendricks: Okay, Praveen, the conference registration process will be handled by our team. You'll need to register in advance and pay the registration fee. Praveen: I'll make sure to take care of that, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 110,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 120,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference follow-up",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 110,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_18",
+    "prev_id": "node_12",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference poster session",
+    "dialogue": "Hendricks: Okay, Praveen, the conference poster session will be a great opportunity for you to showcase your research. You'll need to prepare a poster and be prepared to discuss your research with attendees. Praveen: I'll make sure to prepare a great poster, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 120,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Explain the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 130,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 120
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference follow-up",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 120,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 120
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_19",
+    "prev_id": "node_13",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks explains the conference networking opportunities",
+    "dialogue": "Hendricks: Okay, Praveen, the conference networking opportunities will be a great chance for you to connect with other researchers and academics in the field. You'll have the chance to attend networking sessions and meet with other attendees. Praveen: That sounds like a great opportunity, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 130,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 140,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 130
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference follow-up",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 130,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 130
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_20",
+    "prev_id": "node_19",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks wraps up the conversation",
+    "dialogue": "Hendricks: Well, Praveen, I think we've covered everything. I'm glad we could have this conversation. Praveen: Yes, me too, Professor Hendricks. Thank you for your time.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 140,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Say goodbye",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 150,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 140
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "node_21",
+    "prev_id": "node_20",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks says goodbye to Praveen",
+    "dialogue": "Hendricks: It was great talking to you, Praveen. I'm looking forward to seeing you at the conference. Praveen: Yes, me too, Professor Hendricks. Have a great day.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 150,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": []
+  },
+  {
+    "id": "node_22",
+    "prev_id": "node_17",
+    "speaking_character": "Hendricks",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks discusses the conference catering",
+    "dialogue": "Hendricks: Okay, Praveen, we'll be serving a variety of food options at the conference, including vegetarian and gluten-free options. Praveen: That sounds great, Professor Hendricks. I'm sure the attendees will appreciate it.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "trust",
+          "relationship_stat_current": 110,
+          "relationship_stat_change": 10
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Discuss the conference wrap-up",
+        "next_id": "node_20",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 120,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Explain the conference follow-up",
+        "next_id": "node_21",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Hendricks",
+              "character2": "Praveen",
+              "relationship_stat": "trust",
+              "relationship_stat_current": 110,
+              "relationship_symbol": ">=",
+              "relationship_stat_threshold": 110
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  }
+]

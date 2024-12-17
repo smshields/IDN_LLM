@@ -1,0 +1,773 @@
+//Structured Single-Shot Prompt
+
+//Note - during iteration of this prompt, we had difficulties getting the LLM to retain the JSON formatting of the story tree that we gave it, hence the multiple commands at the bottom to properly format and retain tree metadata.
+
+You are a writer for a game studio that makes visual novel games. You are writing scenes between two characters in a branching narrative style. This writing style consists of dialogue points with options for the players to select responses for what their player character will say. The game you are working on is an educational game that aims to teach the Responsible Conduct of Research (the ethics of performing research in an academic environment) through interactions between characters.
+
+You are writing dialogue for a single preplanned scene, and the scene you are writing involves two characters: Hendricks and Praveen. The Player character is always Hendricks. Player choices should always be utterances from Hendricks. Praveen's responses should be strictly dialogue.
+
+Hendricks is a professor in the Psychology department. Hendricks is the chair of an upcoming conference. Hendricks is looking for reviewers and any help she can get to run the conference. Hendricks is a middle aged woman who is tenured and advises three students, one of which is Praveen.
+- Hendricks is looking for reviewers.
+- Hendricks is Praveen's advisor.
+
+Praveen is a PhD student in his second year and is looking to get involved in the academic community. He is eager, overconfident, and looking for any way to get ahead. Praveen is advised by Hendricks. Praveen is a young man in his mid-twenties and has no experience reviewing academic work.
+- Praveen is looking for help to get ahead.
+- Praveen is overconfident.
+- Praveen would like the opportunity to review for the conference.
+
+In the dialogue you are writing, the conference submission deadline is rapidly approaching, and Hendricks is stressed about finding reviewers. At the same time, Praveen is struggling to get involved with his peers and his academic community at large. Praveen will ask Hendricks if she has any opportunities he can get involved in, to which Hendricks tells him to review papers. Hendricks emphasizes that Praveen needs to be unbiased in this work. Praveen reassures her that he is fit for the job and has it under control. The scene ends with Hendricks offering him the reviewer position and them saying goodbye.
+
+The JSON format we use for scenes is described below. Descriptions of fields are listed in-line after the comment symbols (//). Three dots indicate that there can be multiple entries in the array. The symbols after each key indicate what format the value should be in.
+
+{
+  "id": "", //The id of the current node
+  "prev_id": "", //The id of the previous node
+  "speaking_character": "", //which character is speaking
+  "player_character": "", //which character the players occupies
+  "dialogue_summary": "", //A short high-level description of the dialogue in this node
+  "dialogue": "", //The explicit dialogue in the node
+  "stat_changes": { //The changes in stats that occur as a result of visiting the node
+      "relationships": [ //The changes to relationship stats between characters
+          {
+              "character1": "", //The first character in a relationship
+              "character2": "", //The second character in a relationship
+              "relationship_stat": "", //The name of the relationship stat
+              "relationship_stat_current": int, //The current value of the relationship stat
+              "relationship_stat_change": int, //The numerical change of the relationship stat
+          },
+          ...
+      ],
+      "attributes": [ //The attributes associated with characters
+          {
+              "character": "", //The character associated with the attribute
+              "attribute": "", //The name of the attribute
+              "attribute_change": "" //Whether the attribute is added or removed
+          },
+          ...
+      ],
+  },
+  "choices": [ //A list of choices that lead to the next nodes in the story
+      {
+          "choice_content": "", //The sentence displayed to the player to make a choice
+          "next_id": "", //The id of the next node to be visited if this choice is "selected"
+          "preconditions": { //The requirements for the choice node to be available
+              "relationships": [ // The Required relationship stats for the node
+                  {
+                    "character1": "", //The first character in the relationship 
+                    "character2": "", //The second character in the relationship
+                    "relationship_stat": int, //The relationship stat involved
+                    "relationship_symbol": "" //Should the relationship stat be greater, less, or equal
+            		"relationship_stat_current": int //The current relationship stat
+            		"relationship_threshold": int //What the current relationship stat is compared to
+                  },
+                  ...
+              ],
+              "attributes": [ //What attributes need to be present for the choice to be available
+                  {
+                      "character": "", //Character associated with the attribute
+                      "attribute": "" //Name of the attribute
+                  },
+                  ...
+              ]
+          }
+      },
+      ...
+  ]
+}
+
+I am providing you with the structure of one of these scenes below without dialogue written. Please use the overall scene information and the dialogue_summary to write the corresponding dialogue for each node under the "dialogue" keys. Do not alter any other aspect of the JSON or scene overall. Write in a style that matches a visual novel: short dialogue snippets around a sentence per quotation. Multiple dialogue interactions can occur in a single node, with narration occurring out of quotations and character utterances within quotations. Character quotations should be preceded by the character name (for example: Hendricks: Hello, Praveen. Praveen: Hello to you, Hendricks.).
+
+- Please output your response in the JSON format corresponding to the example text with the dialogue key filled in. 
+- Do not repeat content in dialogue text.
+- Do not use the entire output token length if not necessary.
+- Do not change any other field or structure to the below JSON aside from the dialogue keys.
+
+The existing story JSON is as follows:
+
+[
+ {
+	"id": "intro",
+	"prev_id": "",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen walks in and asks how Hendricks is doing",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "I'm doing good!",
+			"next_id": "doing_good",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Doing alright.",
+			"next_id": "doing_alright",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+ {
+	"id": "doing_good",
+	"prev_id": "intro",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Preveen is happy that Hendricks is doing good, exclaims he's doing good as well",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		    {
+            	"character": "Praveen", 
+            	"attribute": "good", 
+            	"attribute_change": "Add" 
+        	}
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "Great! So about the conference...",
+			"next_id": "about_conference",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Can I assist you with anything?",
+			"next_id": "assist",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+{
+	"id": "doing_alright",
+	"prev_id": "intro",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen comments on Hendrick's stress, and Hendricks tells that she's stressed over deadlines.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "Speaking about the conference",
+			"next_id": "speaking_conference",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Can I assist you with anything?",
+			"next_id": "assist",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "about_conference",
+	"prev_id": "doing_good",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks inquires about how Praveen is doing in the lab, to which Praveen lets her know that he's not doing well with getting involved.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "I thought you said things were going well?",
+			"next_id": "doubt_good",
+			"preconditions": {
+				"relationships": [],
+				"attributes": [
+					{
+            			"character": "Praveen", 
+            			"attribute": "good"
+        			}
+        		]
+			}
+		},
+		{
+			"choice_content": "What have you been trying?",
+			"next_id": "trying",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "speaking_conference",
+	"prev_id": "doing_alright",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks inquires about how Praveen is doing in the lab briefly, to which Praveen lets her know that he's not doing well with getting involved.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "An opportunity will show up",
+			"next_id": "opportunity",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "You're Smart.",
+			"next_id": "smart",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Feel free to talk to me.",
+			"next_id": "free_talk",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "assist",
+	"prev_id": "doing_good",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen comes forward with having trouble finding connections.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "I thought you said things were going well.",
+			"next_id": "doubt_good",
+			"preconditions": {
+				"relationships": [],
+				"attributes": [
+					{
+            			"character": "Praveen", 
+            			"attribute": "good"
+        			}
+        		]
+			}
+		},
+		{
+			"choice_content": "What have you been trying?",
+			"next_id": "trying",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "doubt_good",
+	"prev_id": "assist",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen clarifies he's doing well in general, but is having trouble with finding opportunities.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+			{
+				"character1": "Hendricks",
+				"character2": "Praveen",
+				"relationship_stat": "Relationship",
+				"relationship_stat_current": 0,
+				"relationship_stat_change": -50
+			}
+		],
+		"attributes": [
+			{
+            	"character": "Praveen", 
+            	"attribute": "good", 
+            	"attribute_change": "Remove" 
+        	}
+		]
+	},
+	"choices": [
+		{
+			"choice_content": "An opportunity will show up",
+			"next_id": "opportunity",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "You're Smart.",
+			"next_id": "smart",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Feel free to talk to me.",
+			"next_id": "free_talk",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "trying",
+	"prev_id": "assist",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen talks about his attempts to make connections.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [],
+		"attributes": []
+	},
+	"choices": [
+		{
+			"choice_content": "An opportunity will show up",
+			"next_id": "opportunity",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "You're Smart.",
+			"next_id": "smart",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Feel free to talk to me.",
+			"next_id": "free_talk",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "opportunity",
+	"prev_id": "trying",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks assures Praveen that this is normal, and Praveen asks if there's any opportunities. Hendricks offers for him to peer review a paper.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+			{
+				"character1": "Hendricks",
+				"character2": "Praveen",
+				"relationship_stat": "Relationship",
+				"relationship_stat_current": 0,
+				"relationship_stat_change": 50
+			}
+		],
+		"attributes": []
+	},
+	"choices": [
+		{
+			"choice_content": "I know you're unbiased.",
+			"next_id": "unbiased",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "It's a big responsibility.",
+			"next_id": "responsibility",
+			"preconditions": {
+				"relationships": [
+					{
+                    	"character1": "Praveen", 
+                    	"character2": "Hendricks", 
+                    	"relationship_stat": "Relationship", 
+                    	"relationship_symbol": "<",
+						"relationship_stat_current": 0, 
+						"relationship_threshold": 0
+					}
+				],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "smart",
+	"prev_id": "trying",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks tells Praveen he's smart and offers to do a peer review.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+			{
+				"character1": "Hendricks",
+				"character2": "Praveen",
+				"relationship_stat": "Relationship",
+				"relationship_stat_current": 0,
+				"relationship_stat_change": 50
+			}
+		],
+		"attributes": [
+			{
+            	"character": "Praveen", 
+            	"attribute": "cocky", 
+            	"attribute_change": "Add" 
+        	}
+        ]
+	},
+	"choices": [
+		{
+			"choice_content": "I know you're unbiased.",
+			"next_id": "unbiased",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "It's a big responsibility.",
+			"next_id": "responsibility",
+			"preconditions": {
+				"relationships": 
+				[
+					{
+                    	"character1": "Praveen", 
+                    	"character2": "Hendricks", 
+                    	"relationship_stat": "Relationship", 
+                    	"relationship_symbol": "<",
+						"relationship_stat_current": 0, 
+						"relationship_threshold": 0
+					}
+				],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "free_talk",
+	"prev_id": "trying",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks asks Praveen to trust her, and Praveen disclaims his insecurity of feeling lost; then, Hendricks offers for him to peer review a paper.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+			{
+				"character1": "Hendricks",
+				"character2": "Praveen",
+				"relationship_stat": "Relationship",
+				"relationship_stat_current": 0,
+				"relationship_stat_change": 50
+			}
+		],
+		"attributes": []
+	},
+	"choices": [
+		{
+			"choice_content": "I know you're unbiased.",
+			"next_id": "unbiased",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "It's a big responsibility.",
+			"next_id": "responsibility",
+			"preconditions": {
+				"relationships": 
+				[
+					{
+                    	"character1": "Praveen", 
+                    	"character2": "Hendricks", 
+                    	"relationship_stat": "Relationship", 
+                    	"relationship_symbol": "<",
+						"relationship_stat_current": 0, 
+						"relationship_threshold": 0
+					}
+				],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Reach out if you need help.",
+			"next_id": "help",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "unbiased",
+	"prev_id": "trying",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks emphasizes that it is important that Praveen is unbiased.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+			{
+            	"character": "Praveen", 
+            	"attribute": "cocky", 
+            	"attribute_change": "Add" 
+        	}
+        ]
+	},
+	"choices": [
+		{
+			"choice_content": "You've got this!",
+			"next_id": "help_cocky",
+			"preconditions": {
+				"relationships": [],
+				"attributes": [
+					{
+            			"character": "Praveen", 
+            			"attribute": "cocky"
+        			}
+				]
+			}
+		},
+		{
+			"choice_content": "Reach out if you need help.",
+			"next_id": "help",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Good luck with the review.",
+			"next_id": "responsibility",
+			"preconditions": {
+				"relationships": 
+				[
+					{
+                    	"character1": "Praveen", 
+                    	"character2": "Hendricks", 
+                    	"relationship_stat": "Relationship", 
+                    	"relationship_symbol": ">",
+						"relationship_stat_current": 0, 
+						"relationship_threshold": 0
+					}
+				],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "responsibility",
+	"prev_id": "opportunity",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks emphasizes that this is a large responsibility, and to be professional.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+        ]
+	},
+	"choices": [
+		{
+			"choice_content": "You've got this!",
+			"next_id": "help_cocky",
+			"preconditions": {
+				"relationships": [],
+				"attributes": [
+					{
+            			"character": "Praveen", 
+            			"attribute": "cocky"
+        			}
+				]
+			}
+		},
+		{
+			"choice_content": "Reach out if you need help.",
+			"next_id": "help",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		},
+		{
+			"choice_content": "Good luck with the review.",
+			"next_id": "responsibility",
+			"preconditions": {
+				"relationships": 
+				[
+					{
+                    	"character1": "Praveen", 
+                    	"character2": "Hendricks", 
+                    	"relationship_stat": "Relationship", 
+                    	"relationship_symbol": ">",
+						"relationship_stat_current": 0, 
+						"relationship_threshold": 0
+					}
+				],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "help",
+	"prev_id": "free_talk",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks offers to help in the future, but PRaveen lets her know that he will reach out if he needs help.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [
+		],
+		"attributes": [
+			{
+            	"character": "Praveen", 
+            	"attribute": "cocky", 
+            	"attribute_change": "Remove" 
+        	}
+        ]
+	},
+	"choices": [
+		{
+			"choice_content": "Continue",
+			"next_id": "end",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "help_cocky",
+	"prev_id": "unbiased",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks offers to help in the future, but Praveen lets her know that he has it under control.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [],
+		"attributes": []
+	},
+	"choices": [
+		{
+			"choice_content": "Continue",
+			"next_id": "end",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "luck",
+	"prev_id": "unbiased",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Praveen thanks Hendricks for wishing him good luck.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [],
+		"attributes": []
+	},
+	"choices": [
+		{
+			"choice_content": "Continue",
+			"next_id": "end",
+			"preconditions": {
+				"relationships": [],
+				"attributes": []
+			}
+		}
+	]
+},
+
+{
+	"id": "end",
+	"prev_id": "help",
+	"speaking_character": "Praveen",
+	"player_character": "Hendricks",
+	"dialogue_summary": "Hendricks emails Praveen the review invite and they say goodbye.",
+	"dialogue": "",
+	"stat_changes": {
+		"relationships": [],
+		"attributes": []
+	},
+	"choices": []
+}
+
+]
+
+- Please surround all JSON keys with quotations. 
+- If there are quotation marks within a JSON value, please escape these quotation marks. 
+- Please ensure that the returned JSON is valid.
+- Please provide me the JSON back with the "dialogue" values filled in.  
+- Do not alter the structure of the JSON or change any values aside from the "dialogue" value.
+- Please return the full JSON.

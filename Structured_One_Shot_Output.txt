@@ -1,0 +1,648 @@
+//Structured One-Shot Output
+
+[
+  {
+    "id": "intro",
+    "prev_id": "",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen walks in and asks how Hendricks is doing",
+    "dialogue": "Praveen: Hi, Professor Hendricks. How are you doing today?\nHendricks: Hi Praveen, I'm doing alright. A bit stressed about the conference deadline.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "I'm doing good!",
+        "next_id": "doing_good",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Doing alright.",
+        "next_id": "doing_alright",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "doing_good",
+    "prev_id": "intro",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Preveen is happy that Hendricks is doing good, exclaims he's doing good as well",
+    "dialogue": "Praveen: That's great to hear! I'm doing good too.\nHendricks: That's good to know.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": [
+        {
+          "character": "Praveen",
+          "attribute": "good",
+          "attribute_change": "Add"
+        }
+      ]
+    },
+    "choices": [
+      {
+        "choice_content": "Great! So about the conference...",
+        "next_id": "about_conference",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Can I assist you with anything?",
+        "next_id": "assist",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "doing_alright",
+    "prev_id": "intro",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen comments on Hendrick's stress, and Hendricks tells that she's stressed over deadlines.",
+    "dialogue": "Praveen: You seem a bit stressed, Professor Hendricks.\nHendricks: Yes, I am. The conference deadline is approaching quickly.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Speaking about the conference",
+        "next_id": "speaking_conference",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Can I assist you with anything?",
+        "next_id": "assist",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "about_conference",
+    "prev_id": "doing_good",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks inquires about how Praveen is doing in the lab, to which Praveen lets her know that he's not doing well with getting involved.",
+    "dialogue": "Hendricks: How are you doing in the lab, Praveen?\nPraveen: Honestly, I'm not doing well. I'm having trouble getting involved with my peers.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "I thought you said things were going well?",
+        "next_id": "doubt_good",
+        "preconditions": {
+          "relationships": [],
+          "attributes": [
+            {
+              "character": "Praveen",
+              "attribute": "good"
+            }
+          ]
+        }
+      },
+      {
+        "choice_content": "What have you been trying?",
+        "next_id": "trying",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "speaking_conference",
+    "prev_id": "doing_alright",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks inquires about how Praveen is doing in the lab briefly, to which Praveen lets her know that he's not doing well with getting involved.",
+    "dialogue": "Hendricks: How are you doing in the lab, Praveen?\nPraveen: Honestly, I'm not doing well. I'm having trouble getting involved with my peers.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "An opportunity will show up",
+        "next_id": "opportunity",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "You're Smart.",
+        "next_id": "smart",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Feel free to talk to me.",
+        "next_id": "free_talk",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "assist",
+    "prev_id": "doing_good",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen comes forward with having trouble finding connections.",
+    "dialogue": "Praveen: Professor Hendricks, I've been having trouble finding connections in the lab. I was wondering if you have any opportunities for me to get involved.\nHendricks: I'm actually looking for reviewers for the conference.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "I thought you said things were going well.",
+        "next_id": "doubt_good",
+        "preconditions": {
+          "relationships": [],
+          "attributes": [
+            {
+              "character": "Praveen",
+              "attribute": "good"
+            }
+          ]
+        }
+      },
+      {
+        "choice_content": "What have you been trying?",
+        "next_id": "trying",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "doubt_good",
+    "prev_id": "assist",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen clarifies he's doing well in general, but is having trouble with finding opportunities.",
+    "dialogue": "Praveen: I'm actually doing well in general, but I'm having trouble finding opportunities to get involved.\nHendricks: I see.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "Relationship",
+          "relationship_stat_current": 0,
+          "relationship_stat_change": -50
+        }
+      ],
+      "attributes": [
+        {
+          "character": "Praveen",
+          "attribute": "good",
+          "attribute_change": "Remove"
+        }
+      ]
+    },
+    "choices": [
+      {
+        "choice_content": "An opportunity will show up",
+        "next_id": "opportunity",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "You're Smart.",
+        "next_id": "smart",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Feel free to talk to me.",
+        "next_id": "free_talk",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "trying",
+    "prev_id": "assist",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen talks about his attempts to make connections.",
+    "dialogue": "Praveen: I've been trying to attend seminars and join research groups, but I haven't had much luck yet.\nHendricks: I see.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "An opportunity will show up",
+        "next_id": "opportunity",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "You're Smart.",
+        "next_id": "smart",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Feel free to talk to me.",
+        "next_id": "free_talk",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "opportunity",
+    "prev_id": "trying",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks assures Praveen that this is normal, and Praveen asks if there's any opportunities. Hendricks offers for him to peer review a paper.",
+    "dialogue": "Hendricks: Don't worry, Praveen. It's normal to struggle at first. I actually have an opportunity for you.\nPraveen: Really? What is it?\nHendricks: I'm looking for reviewers for the conference. Would you be interested in reviewing a paper?",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "Relationship",
+          "relationship_stat_current": 0,
+          "relationship_stat_change": 50
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "I know you're unbiased.",
+        "next_id": "unbiased",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "It's a big responsibility.",
+        "next_id": "responsibility",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Praveen",
+              "character2": "Hendricks",
+              "relationship_stat": "Relationship",
+              "relationship_symbol": "<",
+              "relationship_stat_current": 0,
+              "relationship_threshold": 0
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "smart",
+    "prev_id": "trying",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks tells Praveen he's smart and offers to do a peer review.",
+    "dialogue": "Hendricks: You're smart, Praveen. I think you'd be a great fit for the conference. I'll even do a peer review with you.\nPraveen: That's very kind of you, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "Relationship",
+          "relationship_stat_current": 0,
+          "relationship_stat_change": 50
+        }
+      ],
+      "attributes": [
+        {
+          "character": "Praveen",
+          "attribute": "cocky",
+          "attribute_change": "Add"
+        }
+      ]
+    },
+    "choices": [
+      {
+        "choice_content": "I know you're unbiased.",
+        "next_id": "unbiased",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "It's a big responsibility.",
+        "next_id": "responsibility",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Praveen",
+              "character2": "Hendricks",
+              "relationship_stat": "Relationship",
+              "relationship_symbol": "<",
+              "relationship_stat_current": 0,
+              "relationship_threshold": 0
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "free_talk",
+    "prev_id": "trying",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks asks Praveen to trust her, and Praveen disclaims his insecurity of feeling lost; then, Hendricks offers for him to peer review a paper.",
+    "dialogue": "Hendricks: Trust me, Praveen. I think you'll do great. I'll even do a peer review with you.\nPraveen: Okay, Professor Hendricks. I appreciate your trust in me.",
+    "stat_changes": {
+      "relationships": [
+        {
+          "character1": "Hendricks",
+          "character2": "Praveen",
+          "relationship_stat": "Relationship",
+          "relationship_stat_current": 0,
+          "relationship_stat_change": 50
+        }
+      ],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "I know you're unbiased.",
+        "next_id": "unbiased",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "It's a big responsibility.",
+        "next_id": "responsibility",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Praveen",
+              "character2": "Hendricks",
+              "relationship_stat": "Relationship",
+              "relationship_symbol": "<",
+              "relationship_stat_current": 0,
+              "relationship_threshold": 0
+            }
+          ],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Reach out if you need help.",
+        "next_id": "help",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "unbiased",
+    "prev_id": "trying",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks emphasizes that it is important that Praveen is unbiased.",
+    "dialogue": "Hendricks: Remember, Praveen, it's essential to be unbiased when reviewing papers.\nPraveen: Of course, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": [
+        {
+          "character": "Praveen",
+          "attribute": "cocky",
+          "attribute_change": "Add"
+        }
+      ]
+    },
+    "choices": [
+      {
+        "choice_content": "You've got this!",
+        "next_id": "help_cocky",
+        "preconditions": {
+          "relationships": [],
+          "attributes": [
+            {
+              "character": "Praveen",
+              "attribute": "cocky"
+            }
+          ]
+        }
+      },
+      {
+        "choice_content": "Reach out if you need help.",
+        "next_id": "help",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Good luck with the review.",
+        "next_id": "responsibility",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Praveen",
+              "character2": "Hendricks",
+              "relationship_stat": "Relationship",
+              "relationship_symbol": ">",
+              "relationship_stat_current": 0,
+              "relationship_threshold": 0
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "responsibility",
+    "prev_id": "opportunity",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks emphasizes that this is a large responsibility, and to be professional.",
+    "dialogue": "Hendricks: Remember, Praveen, this is a big responsibility. You need to be professional and unbiased.\nPraveen: I understand, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "You've got this!",
+        "next_id": "help_cocky",
+        "preconditions": {
+          "relationships": [],
+          "attributes": [
+            {
+              "character": "Praveen",
+              "attribute": "cocky"
+            }
+          ]
+        }
+      },
+      {
+        "choice_content": "Reach out if you need help.",
+        "next_id": "help",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      },
+      {
+        "choice_content": "Good luck with the review.",
+        "next_id": "responsibility",
+        "preconditions": {
+          "relationships": [
+            {
+              "character1": "Praveen",
+              "character2": "Hendricks",
+              "relationship_stat": "Relationship",
+              "relationship_symbol": ">",
+              "relationship_stat_current": 0,
+              "relationship_threshold": 0
+            }
+          ],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "help",
+    "prev_id": "free_talk",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks offers to help in the future, but PRaveen lets her know that he will reach out if he needs help.",
+    "dialogue": "Hendricks: If you need any help in the future, don't hesitate to reach out.\nPraveen: Thank you, Professor Hendricks. I'll definitely keep that in mind.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": [
+        {
+          "character": "Praveen",
+          "attribute": "cocky",
+          "attribute_change": "Remove"
+        }
+      ]
+    },
+    "choices": [
+      {
+        "choice_content": "Continue",
+        "next_id": "end",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "help_cocky",
+    "prev_id": "unbiased",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks offers to help in the future, but Praveen lets her know that he has it under control.",
+    "dialogue": "Hendricks: If you need any help in the future, don't hesitate to reach out.\nPraveen: Thank you, Professor Hendricks. I've got it under control.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Continue",
+        "next_id": "end",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "luck",
+    "prev_id": "unbiased",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Praveen thanks Hendricks for wishing him good luck.",
+    "dialogue": "Hendricks: Good luck with the review, Praveen.\nPraveen: Thank you, Professor Hendricks.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": [
+      {
+        "choice_content": "Continue",
+        "next_id": "end",
+        "preconditions": {
+          "relationships": [],
+          "attributes": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "end",
+    "prev_id": "help",
+    "speaking_character": "Praveen",
+    "player_character": "Hendricks",
+    "dialogue_summary": "Hendricks emails Praveen the review invite and they say goodbye.",
+    "dialogue": "Hendricks: I've sent you an email with the review invite. Good luck, Praveen.\nPraveen: Thank you, Professor Hendricks. I'll see you around.",
+    "stat_changes": {
+      "relationships": [],
+      "attributes": []
+    },
+    "choices": []
+  }
+]
