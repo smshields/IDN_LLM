@@ -2,7 +2,7 @@ Large Language Model Generation of Storylets
 
 Description: This material contains LLM prompts and outputs, tree formatting information, and human-authored trees used to explore using LLMs in creating branching trees that can be used in storylet authoring. The purpose of this material is to enable the reproduction of prompting approaches, provide insight into iteration approaches, and see the results that were evaluated by interactive digital narrative authors. It also contains the survey released for the authors to respond to questions about the quality and usefulness of these prompting strategies in the context of their workflow. 
 
-Size: 
+Size: 26.9 kb
 
 Platform: All files are in .txt format and are human-readable, but can be used with an LLM system for reproduction.
 
